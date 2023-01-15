@@ -955,25 +955,31 @@ void Scheduler::ProcessScheduledActions() {
         client_->ScheduledActionPerformImplSideInvalidation();
         break;
       case SchedulerStateMachine::Action::DRAW_IF_POSSIBLE:
+        fprintf(stderr,"Scheduler::ProcessScheduledActions case SchedulerStateMachine::Action::DRAW_IF_POSSIBLE\n");                          
         DrawIfPossible();
         break;
       case SchedulerStateMachine::Action::DRAW_FORCED:
+        fprintf(stderr,"Scheduler::ProcessScheduledActions case SchedulerStateMachine::Action::DRAW_FORCED\n");                          
         DrawForced();
         break;
       case SchedulerStateMachine::Action::DRAW_ABORT:
+        fprintf(stderr,"Scheduler::ProcessScheduledActions case SchedulerStateMachine::Action::DRAW_ABORT\n");                          
         // No action is actually performed, but this allows the state machine to
         // drain the pipeline without actually drawing.
         state_machine_.AbortDraw();
         break;
       case SchedulerStateMachine::Action::BEGIN_LAYER_TREE_FRAME_SINK_CREATION:
+        fprintf(stderr,"Scheduler::ProcessScheduledActions case SchedulerStateMachine::Action::BEGIN_LAYER_TREE_FRAME_SINK_CREATION\n");                          
         state_machine_.WillBeginLayerTreeFrameSinkCreation();
         client_->ScheduledActionBeginLayerTreeFrameSinkCreation();
         break;
       case SchedulerStateMachine::Action::PREPARE_TILES:
+        fprintf(stderr,"Scheduler::ProcessScheduledActions case SchedulerStateMachine::Action::PREPARE_TILES\n");                          
         state_machine_.WillPrepareTiles();
         client_->ScheduledActionPrepareTiles();
         break;
       case SchedulerStateMachine::Action::INVALIDATE_LAYER_TREE_FRAME_SINK:
+        fprintf(stderr,"Scheduler::ProcessScheduledActions case SchedulerStateMachine::Action::INVALIDATE_LAYER_TREE_FRAME_SINK\n");                          
         state_machine_.WillInvalidateLayerTreeFrameSink();
         client_->ScheduledActionInvalidateLayerTreeFrameSink(
             state_machine_.RedrawPending());
