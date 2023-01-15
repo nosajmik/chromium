@@ -1070,6 +1070,7 @@ void SingleThreadProxy::BeginMainFrame(
 
 void SingleThreadProxy::DoBeginMainFrame(
     const viz::BeginFrameArgs& begin_frame_args) {
+  fprintf(stderr, "SingleThreadProxy::DoBeginMainFrame\n");
   // Only update scroll deltas if we are going to commit the frame, otherwise
   // scroll offsets get confused.
   if (!IsDeferringCommits()) {
@@ -1134,6 +1135,7 @@ void SingleThreadProxy::BeginMainFrameAbortedOnImplThread(
 }
 
 DrawResult SingleThreadProxy::ScheduledActionDrawIfPossible() {
+  fprintf(stderr, "SingleThreadProxy::ScheduledActionDrawIfPossible\n");
   DebugScopedSetImplThread impl(task_runner_provider_);
   LayerTreeHostImpl::FrameData frame;
   frame.begin_frame_ack =
